@@ -6,6 +6,12 @@ Spin up a full Azure/Avi environment through Terraform.
 ## Prerequisites:
 - Terraform installed in the orchestrator VM
 - Create an application (Read-Only) in Azure Active directory to allow the jump VM to access Azure API
+- Make sure the following environment variables are defined:
+```
+TF_VAR_avi_old_password=**********************************
+TF_VAR_avi_password=**********************************
+TF_VAR_avi_username=admin
+```
 - Make sure Azure credential/details are configured as environment variable (the client_id and secret ending by ro are the details for the application used by the jump VM):
 ```
 ARM_CLIENT_ID=**********************************
@@ -16,8 +22,6 @@ TF_VAR_azure_client_secret_ro=**********************************
 TF_VAR_azure_client_id_ro=**********************************
 TF_VAR_azure_subscription_id=**********************************
 TF_VAR_azure_tenant_id=**********************************
-TF_VAR_avi_user=admin
-TF_VAR_avi_password==**********************************
 ```
 - Make sure you approved the Avi T&C
 ```

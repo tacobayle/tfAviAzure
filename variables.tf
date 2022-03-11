@@ -284,7 +284,7 @@ variable "ansible" {
     prefixGroup = "azure"
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
     aviPbAbsentTag = "v1.02"
-    aviConfigureTag = "v1.08"
+    aviConfigureTag = "v1.09"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
 //    opencartInstallUrl = "https://github.com/tacobayle/ansibleOpencartInstall"
 //    opencartInstallTag = "v1.2"
