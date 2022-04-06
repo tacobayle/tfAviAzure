@@ -220,8 +220,8 @@ variable "ansible" {
     version = "2.10.7"
     prefixGroup = "azure"
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
-    aviPbAbsentTag = "v1.02"
-    aviConfigureTag = "v1.09"
+    aviPbAbsentTag = "v1.03"
+    aviConfigureTag = "v1.34"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
   }
 }
