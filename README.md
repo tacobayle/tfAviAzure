@@ -36,9 +36,9 @@ az vm image list --publisher avi-networks --all
   {
     "offer": "avi-vantage-adc",
     "publisher": "avi-networks",
-    "sku": "nsx-alb-controller-2101",
-    "urn": "avi-networks:avi-vantage-adc:nsx-alb-controller-2101:21.01.01",
-    "version": "21.01.01"
+    "sku": "nsx-alb-controller-2001",
+    "urn": "avi-networks:avi-vantage-adc:nsx-alb-controller-2001:20.01.06",
+    "version": "20.01.06"
   },
 ...
 az vm image terms accept --urn avi-networks:avi-vantage-adc:nsx-alb-controller-2001:20.01.06
@@ -60,7 +60,7 @@ on linux_amd64
 
 ### Avi version
 ```
-Avi 21.1.1
+Avi 20.0.6
 ```
 
 ### Azure Region:
