@@ -41,7 +41,7 @@ az vm image list --publisher avi-networks --all
     "version": "21.01.01"
   },
 ...
-az vm image terms accept --urn avi-networks:avi-vantage-adc:nsx-alb-controller-2101:21.01.01
+az vm image terms accept --urn avi-networks:avi-vantage-adc:nsx-alb-controller-2001:20.01.06
 ```
 - SSH Key (public and private) paths defined in var.ssh_key.public and var.ssh_key.private
 

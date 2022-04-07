@@ -19,6 +19,10 @@ variable "azure" {
         {
           name = "subnet-vip"
           cidr = "172.16.3.0/24"
+        },
+        {
+          name = "subnet-tkg"
+          cidr = "172.16.4.0/24"
         }
       ]
     }
@@ -235,9 +239,9 @@ variable "controller" {
     type = "Standard_DS4_v2"
     offer = "avi-vantage-adc"
     publisher = "avi-networks"
-    sku = "nsx-alb-controller-2101"
-    version = "21.01.01"
-    aviVersion = "21.1.1"
+    sku = "nsx-alb-controller-2001"
+    version = "20.01.06"
+    aviVersion = "20.1.6"
     cluster = false
     from_email = "avicontroller@avidemo.fr"
     se_in_provider_context = "false"

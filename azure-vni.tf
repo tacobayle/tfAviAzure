@@ -34,7 +34,7 @@ resource "azurerm_subnet_route_table_association" "rtSubnetAssociation" {
 }
 
 #
-# the following allows the network app to reach the Internet
+# the following allows the network app and tkg to reach the Internet
 #
 
 resource "azurerm_public_ip" "ip-nat-gw-for-app-subnet" {
@@ -61,5 +61,10 @@ resource "azurerm_nat_gateway_public_ip_association" "natGwPublicIpAssociation" 
 
 resource "azurerm_subnet_nat_gateway_association" "nat-for-subnet-app" {
   subnet_id      = azurerm_subnet.subnet[1].id
+  nat_gateway_id = azurerm_nat_gateway.nat-gw-for-app-subnet.id
+}
+
+resource "azurerm_subnet_nat_gateway_association" "nat-for-subnet-tkg" {
+  subnet_id      = azurerm_subnet.subnet[3].id
   nat_gateway_id = azurerm_nat_gateway.nat-gw-for-app-subnet.id
 }
