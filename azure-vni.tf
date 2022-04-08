@@ -60,6 +60,7 @@ resource "azurerm_nat_gateway_public_ip_association" "natGwPublicIpAssociation" 
 }
 
 data "azurerm_subnet" "subnets-for-nat-gw" {
+  depends_on = [azurerm_subnet.subnet]
   count = length(var.azure.vnet.nat_gateway.subnet_names)
   name                 = var.azure.vnet.nat_gateway.subnet_names[count.index]
   virtual_network_name = azurerm_virtual_network.vn.name
