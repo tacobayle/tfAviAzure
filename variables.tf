@@ -21,9 +21,14 @@ variable "azure" {
           cidr = "172.16.3.0/24"
         }
       ]
+      nat_gateway = {
+        name = "nat-gw"
+        subnet_names = ["subnet-app"]
+      }
     }
     vnetName = "vnet-avi"
     vnetCidr = "172.16.0.0/19"
+    domain = "avi.com"
     sg = {
       name = "sg-avi"
       rules = [
@@ -221,7 +226,7 @@ variable "ansible" {
     prefixGroup = "azure"
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
     aviPbAbsentTag = "v1.03"
-    aviConfigureTag = "v1.34"
+    aviConfigureTag = "v1.35"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
   }
 }

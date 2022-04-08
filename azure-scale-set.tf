@@ -3,7 +3,7 @@ data "template_file" "scaleSet" {
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "scaleSet" {
-  depends_on = [azurerm_subnet_network_security_group_association.sgSubnetAssociation, azurerm_subnet_route_table_association.rtSubnetAssociation, azurerm_subnet_nat_gateway_association.nat-for-subnet-app]
+  depends_on = [azurerm_subnet_network_security_group_association.sgSubnetAssociation, azurerm_subnet_route_table_association.rtSubnetAssociation, azurerm_subnet_nat_gateway_association.nat-for-subnets]
   name                = var.scaleset.name
   resource_group_name       = azurerm_resource_group.rg.name
   location                  = var.azure.rg.location

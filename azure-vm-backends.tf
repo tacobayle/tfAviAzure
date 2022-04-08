@@ -1,6 +1,6 @@
 
 resource "azurerm_network_interface" "nicBackend" {
-  depends_on = [azurerm_subnet_network_security_group_association.sgSubnetAssociation, azurerm_subnet_route_table_association.rtSubnetAssociation, azurerm_subnet_nat_gateway_association.nat-for-subnet-app]
+  depends_on = [azurerm_subnet_network_security_group_association.sgSubnetAssociation, azurerm_subnet_route_table_association.rtSubnetAssociation, azurerm_subnet_nat_gateway_association.nat-for-subnets]
   count = var.backend.count
   name = "nic-backend${count.index}"
   location = var.azure.rg.location
