@@ -49,7 +49,7 @@ resource "azurerm_public_ip" "ip-nat-gw-for-app-subnet" {
 }
 
 resource "azurerm_nat_gateway" "nat-gw-for-app-subnet" {
-  name                = "natGateway"
+  name                = var.azure.vnet.nat_gateway.name
   location = var.azure.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
@@ -59,12 +59,25 @@ resource "azurerm_nat_gateway_public_ip_association" "natGwPublicIpAssociation" 
   public_ip_address_id = azurerm_public_ip.ip-nat-gw-for-app-subnet.id
 }
 
-resource "azurerm_subnet_nat_gateway_association" "nat-for-subnet-app" {
-  subnet_id      = azurerm_subnet.subnet[1].id
+data "azurerm_subnet" "subnets-for-nat-gw" {
+  count = length(var.azure.vnet.nat_gateway.subnet_names)
+  name                 = var.azure.vnet.nat_gateway.subnet_names[count.index]
+  virtual_network_name = azurerm_virtual_network.vn.name
+  resource_group_name  = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_subnet_nat_gateway_association" "nat-for-subnets" {
+  count = length(var.azure.vnet.nat_gateway.subnet_names)
+  subnet_id      = data.azurerm_subnet.subnets-for-nat-gw[count.index].id
   nat_gateway_id = azurerm_nat_gateway.nat-gw-for-app-subnet.id
 }
 
-resource "azurerm_subnet_nat_gateway_association" "nat-for-subnet-tkg" {
-  subnet_id      = azurerm_subnet.subnet[3].id
-  nat_gateway_id = azurerm_nat_gateway.nat-gw-for-app-subnet.id
-}
+//resource "azurerm_subnet_nat_gateway_association" "nat-for-subnet-app" {
+//  subnet_id      = azurerm_subnet.subnet[1].id
+//  nat_gateway_id = azurerm_nat_gateway.nat-gw-for-app-subnet.id
+//}
+//
+//resource "azurerm_subnet_nat_gateway_association" "nat-for-subnet-tkg" {
+//  subnet_id      = azurerm_subnet.subnet[3].id
+//  nat_gateway_id = azurerm_nat_gateway.nat-gw-for-app-subnet.id
+//}
